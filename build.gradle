@@ -14,6 +14,14 @@ dependencies {
 
 }
 
+
 test {
-    useTestNG()
+    useTestNG(){
+        if (project.hasProperty('sample') && project.getProperties().get('sample')=='true') { suites  'src/test/resources/testng.xml'}
+
+    }
+    testLogging {
+        outputs.upToDateWhen {false}
+        showStandardStreams = true
+    }
 }
